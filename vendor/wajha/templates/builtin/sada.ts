@@ -33,7 +33,9 @@ const t = typeset({
   accent: WAVE,
   head: { weight: 700, size: 0.086, lineHeight: 1.18, letterSpacing: -0.01, maxLines: 2 },
   sub: { weight: 450, size: 0.038, lineHeight: 1.5, maxLines: 2 },
-  eyebrow: { color: MUTED, highlight: WAVE, size: 0.024, letterSpacing: 0.14, weight: 600 },
+  // The Arabic wordmark is the brand line, not a kicker: larger and in the
+  // app's navy so it reads at store-listing size. Arabic takes no tracking.
+  eyebrow: { color: WAVE, highlight: WAVE, size: 0.04, letterSpacing: 0, weight: 700 },
 });
 
 const phone = (o: Parameters<typeof device>[0]) =>
