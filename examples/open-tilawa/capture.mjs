@@ -145,19 +145,23 @@ try {
       };
 
       if (screen.flow === 'reciters') {
-        // 1.13.20+ opens the picker from the "اختيار القارئ" pill under the
-        // player; older builds had a "عرض الكل" section button. Try both so
-        // the shot keeps working across releases.
-        const picker =
-          page.locator('button').filter({ hasText: 'اختيار القارئ' }).first();
-        if (await picker.count()) {
+        // Mobile 1.13.20+ opens the picker from the "اختيار القارئ" pill under
+        // the player; desktop shows a nav tab that opens the list inline. Older
+        // builds had a "عرض الكل" section button. Try each so the shot keeps
+        // working across releases and breakpoints.
+        const visible = page.locator('button:visible');
+        const nav = visible.filter({ hasText: /^القرّاء$/ }).first();
+        const picker = visible.filter({ hasText: 'اختيار القارئ' }).first();
+        if (await nav.count()) {
+          await nav.click({ timeout: 20_000 });
+        } else if (await picker.count()) {
           await picker.click({ timeout: 20_000 });
         } else {
           const showAll = page.getByRole('button', { name: 'عرض الكل' }).first();
           await showAll.waitFor({ timeout: 45_000 });
           await showAll.click({ timeout: 20_000 });
         }
-        await page.getByPlaceholder('ابحث باسم القارئ').waitFor({ timeout: 15_000 });
+        await page.getByPlaceholder('ابحث باسم القارئ').first().waitFor({ timeout: 15_000 });
         await page.waitForTimeout(900);
       } else if (screen.flow === 'play') {
         await page.waitForTimeout(4_000);

@@ -225,13 +225,31 @@ Templates with native tablet layouts (`mono-swiss`, `noir-gold`, `obsidian`, `pa
 # Playwright lives outside the project in this workspace; point the example at it:
 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \
   npx capture-flow run --flow examples/open-tilawa/flow.json
+
+# Rebuild the minimal Sada set from the checked-in captures:
+npx tsx src/cli.ts build --manifest examples/open-tilawa/shots-minimal.json
+npx tsx src/cli.ts build --manifest examples/open-tilawa/shots-desktop.json
+npx tsx src/cli.ts verify --dir screenshots
 ```
 
-The generated set is checked in at `examples/open-tilawa/store-assets` (20 files: iPhone 6.9″, iPhone 6.3″, iPad 13″, Google Play phone, Google Play tablet). Three details in the example are worth copying:
+The full Sada set is checked in at `screenshots` (24 files, grouped by store):
+
+```
+screenshots/
+  App Store/ar-SA/
+    iPhone 6.9/  iPhone 6.3/  iPad 13/
+  Google Play/ar/
+    Phone/  Tablet 10/
+  Large screens/
+    mac-2880/ar-SA/
+```
+
+The example has three manifests: `shots.json` builds the original Noor set in `store-assets`, `shots-minimal.json` builds the Sada App Store and Google Play sets, and `shots-desktop.json` builds the large-screen MacBook set under `screenshots/Large screens`. Four details in the example are worth copying:
 
 - **Hydration:** the deployed app needs ~20 s to boot. The script waits for the real UI (`getByRole('button', { name: 'تشغيل' })`) rather than for `load`, and navigates with `waitUntil: 'commit'`.
 - **Audio:** headless Chromium cannot use Tilawah's service-worker WebTorrent stream, so the script points `/webtorrent/…` at Tilawah's own documented `/media/` web seed. The player then shows real playback time and an active spectrum instead of a paused 0:00.
-- **Large screens:** the same four screens are captured at tablet viewports (`ipad`, `android-tablet`) and mapped to `ipad-13` / `play-tablet-10` in the manifest.
+- **Spectrum:** `sada` draws the app's actual 28-bar player spectrum, captured from `AnalyserNode` during that playback; the template file records the snapshot so the strip can be replaced with another app's data.
+- **Large screens:** the same four screens are captured at tablet and desktop viewports (`ipad`, `android-tablet`, `mac` at 1440×900 @2) and mapped to `ipad-13`, `play-tablet-10` and `mac-2880`. The desktop layout gets a two-column copy/laptop composition; the phone-first layouts adapt to tablet automatically.
 
 ## Library
 

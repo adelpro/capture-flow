@@ -1,0 +1,40 @@
+{
+  "app": "Tilawah",
+  "template": "sada",
+  "structure": "flat",
+  "files": [
+    {
+      "path": "mac-2880/ar-SA/01.png",
+      "width": 2880,
+      "height": 1800,
+      "family": "mac",
+      "lang": "ar-SA",
+      "slide": 1
+    },
+    {
+      "path": "mac-2880/ar-SA/02.png",
+      "width": 2880,
+      "height": 1800,
+      "family": "mac",
+      "lang": "ar-SA",
+      "slide": 2
+    },
+    {
+      "path": "mac-2880/ar-SA/03.png",
+      "width": 2880,
+      "height": 1800,
+      "family": "mac",
+      "lang": "ar-SA",
+      "slide": 3
+    },
+    {
+      "path": "mac-2880/ar-SA/04.png",
+      "width": 2880,
+      "height": 1800,
+      "family": "mac",
+      "lang": "ar-SA",
+      "slide": 4
+    }
+  ],
+  "warnings": []
+}

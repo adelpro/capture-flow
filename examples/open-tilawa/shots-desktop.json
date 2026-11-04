@@ -1,0 +1,42 @@
+{
+  "app": "Tilawah",
+  "template": "sada",
+  "out": "../../screenshots/Large screens",
+  "structure": "flat",
+  "languages": [
+    "ar-SA"
+  ],
+  "sizes": [
+    "mac-2880"
+  ],
+  "slides": [
+    {
+      "headline": "استمع *بخشوع*",
+      "subtitle": "تلاوة كاملة، بلا تشتيت.",
+      "captures": {
+        "mac": "captures-desktop/mac-01.png"
+      }
+    },
+    {
+      "headline": "قارئك *المفضّل*",
+      "subtitle": "نخبة من القرّاء، وبحث سريع.",
+      "captures": {
+        "mac": "captures-desktop/mac-02.png"
+      }
+    },
+    {
+      "headline": "تحكّم *كامل*",
+      "subtitle": "السمة، اللغة، وسرعة التلاوة.",
+      "captures": {
+        "mac": "captures-desktop/mac-03.png"
+      }
+    },
+    {
+      "headline": "حرّ *ومفتوح*",
+      "subtitle": "بلا حسابات ولا تتبّع.",
+      "captures": {
+        "mac": "captures-desktop/mac-04.png"
+      }
+    }
+  ]
+}
