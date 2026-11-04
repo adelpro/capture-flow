@@ -1,0 +1,21 @@
+vendor/wajha is derived from Wajha — https://github.com/M-Alkassem/Wajha
+
+Copyright (c) 2026 Wajha contributors, released under the MIT License (see
+LICENSE in this directory).
+
+Vendored paths:
+  model/       project model, catalogue, templates, typography, validation
+  engine/      Canvas 2D renderer (plus the Node test adapter)
+  export/      store folder/file naming (paths.ts) and PNG encoding (png.ts)
+  templates/   the built-in template set
+  ui/sortShots.ts  slide ordering helpers
+
+Changes for capture-flow:
+  - imports kept as-is except for the renamed Node adapter
+    (engine/testing/canvasNode.ts) and its font root;
+  - export/csv.ts, export/index.ts, export/plan.ts, export/runner.ts,
+    export/worker.ts and export/png.worker.ts removed (browser-only or unused);
+  - ExportTarget widened to string so a CLI can name its own sizes;
+  - ui/sortShots.ts import paths repointed at ../model.
+
+The MIT notice in LICENSE applies to these files and to this repository.

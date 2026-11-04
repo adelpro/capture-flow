@@ -1,0 +1,62 @@
+{
+  "app": "Tilawah",
+  "template": "noor",
+  "out": "store-assets",
+  "structure": "stores",
+  "languages": [
+    "ar-SA"
+  ],
+  "sizes": [
+    "ios-6.9",
+    "ios-6.3",
+    "ipad-13",
+    "play-phone",
+    "play-tablet-10"
+  ],
+  "slides": [
+    {
+      "templateSlide": 0,
+      "headline": "استمع للقرآن *بخشوع*",
+      "subtitle": "تلاوات كاملة، ومؤشر طيفي يتحرك مع الصوت.",
+      "captures": {
+        "iphone": "captures/iphone-01.png",
+        "android-phone": "captures/android-01.png",
+        "ipad": "captures/ipad-01.png",
+        "android-tablet": "captures/android-tablet-01.png"
+      }
+    },
+    {
+      "templateSlide": 1,
+      "headline": "اختر *قارئك* المفضّل",
+      "subtitle": "نخبة من القرّاء، مع بحث سريع وسجل استماع.",
+      "captures": {
+        "iphone": "captures/iphone-02.png",
+        "android-phone": "captures/android-02.png",
+        "ipad": "captures/ipad-02.png",
+        "android-tablet": "captures/android-tablet-02.png"
+      }
+    },
+    {
+      "templateSlide": 3,
+      "headline": "تحكّم *كامل* في تجربتك",
+      "subtitle": "اللغة، السمة، سرعة التلاوة، والاختصارات.",
+      "captures": {
+        "iphone": "captures/iphone-03.png",
+        "android-phone": "captures/android-03.png",
+        "ipad": "captures/ipad-03.png",
+        "android-tablet": "captures/android-tablet-03.png"
+      }
+    },
+    {
+      "templateSlide": 4,
+      "headline": "مفتوح المصدر *دائماً*",
+      "subtitle": "بلا حسابات ولا تتبّع، ويعمل من متصفّحك.",
+      "captures": {
+        "iphone": "captures/iphone-04.png",
+        "android-phone": "captures/android-04.png",
+        "ipad": "captures/ipad-04.png",
+        "android-tablet": "captures/android-tablet-04.png"
+      }
+    }
+  ]
+}

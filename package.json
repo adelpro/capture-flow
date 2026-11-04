@@ -1,0 +1,58 @@
+{
+  "name": "capture-flow",
+  "version": "0.1.1",
+  "description": "Turn raw simulator and browser captures into App Store and Google Play screenshots.",
+  "type": "module",
+  "license": "MIT",
+  "author": "adelpro",
+  "keywords": [
+    "screenshots",
+    "app-store",
+    "google-play",
+    "store-assets",
+    "fastlane",
+    "playwright",
+    "simctl",
+    "adb"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "capture-flow": "./bin/capture-flow.mjs"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./build": "./src/build.ts",
+    "./manifest": "./src/manifest.ts",
+    "./capture": "./src/capture.ts",
+    "./verify": "./src/verify.ts"
+  },
+  "files": [
+    "bin",
+    "src",
+    "vendor",
+    "skills"
+  ],
+  "scripts": {
+    "build": "tsx src/cli.ts build",
+    "verify": "tsx src/cli.ts verify",
+    "typecheck": "tsc --noEmit",
+    "example:tilawah": "tsx src/cli.ts run --flow examples/open-tilawa/flow.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/cairo": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/noto-sans-arabic": "^5.3.0",
+    "@napi-rs/canvas": "^1.1.0",
+    "fflate": "^0.8.3",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}
