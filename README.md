@@ -209,13 +209,13 @@ Templates with native tablet layouts (`mono-swiss`, `noir-gold`, `obsidian`, `pa
 | --- | --- |
 | `elegant` | `desert-dune`, `noir-gold`, `paper-and-ink` |
 | `dark` | `midnight-neon`, `noor`, `obsidian` |
-| `minimal` | `launchpad`, `mono-swiss`, `sage` |
+| `minimal` | `launchpad`, `mono-swiss`, `sada`, `sage` |
 | `gradient` | `aurora`, `glass-prism`, `sunset-boulevard` |
 | `playful` | `bubblegum`, `clay-garden` |
 | `bold` | `citrus-pop`, `loud-and-clear`, `split-tone` |
 | `panorama` | `panorama-peaks`, `panorama-ribbon`, `panorama-waves` |
 
-`noor` (deep emerald, gold geometry, Cairo/Noto Sans Arabic) is the template used by the Tilawah example.
+`noor` (deep emerald, gold geometry, Cairo/Noto Sans Arabic) is the template used by the Tilawah App Store set. `sada` (صدى, "echo") is a minimal Arabic-first frame in Tilawah's own palette — white paper, near-black ink and the app's two spectrum blues — used by the Google Play minimal set.
 
 ## Example: open-tilawa
 

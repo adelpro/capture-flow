@@ -23,6 +23,7 @@ import { panoramaPeaks } from './builtin/panoramaPeaks';
 import { panoramaRibbon } from './builtin/panoramaRibbon';
 import { panoramaWaves } from './builtin/panoramaWaves';
 import { paperAndInk } from './builtin/paperAndInk';
+import { sada } from './builtin/sada';
 import { sage } from './builtin/sage';
 import { splitTone } from './builtin/splitTone';
 import { sunsetBoulevard } from './builtin/sunsetBoulevard';
@@ -48,6 +49,7 @@ export const BUILTIN_TEMPLATES: Template[] = [
   desertDune,
   panoramaRibbon,
   sage,
+  sada,
 ];
 
 export function builtinTemplate(id: string): Template | undefined {

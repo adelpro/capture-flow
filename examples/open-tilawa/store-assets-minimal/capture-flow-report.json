@@ -1,0 +1,72 @@
+{
+  "app": "Tilawah",
+  "template": "sada",
+  "structure": "stores",
+  "files": [
+    {
+      "path": "Google Play/ar/Phone/01.png",
+      "width": 1080,
+      "height": 1920,
+      "family": "android-phone",
+      "lang": "ar-SA",
+      "slide": 1
+    },
+    {
+      "path": "Google Play/ar/Phone/02.png",
+      "width": 1080,
+      "height": 1920,
+      "family": "android-phone",
+      "lang": "ar-SA",
+      "slide": 2
+    },
+    {
+      "path": "Google Play/ar/Phone/03.png",
+      "width": 1080,
+      "height": 1920,
+      "family": "android-phone",
+      "lang": "ar-SA",
+      "slide": 3
+    },
+    {
+      "path": "Google Play/ar/Phone/04.png",
+      "width": 1080,
+      "height": 1920,
+      "family": "android-phone",
+      "lang": "ar-SA",
+      "slide": 4
+    },
+    {
+      "path": "Google Play/ar/Tablet 10/01.png",
+      "width": 1440,
+      "height": 2560,
+      "family": "android-tablet",
+      "lang": "ar-SA",
+      "slide": 1
+    },
+    {
+      "path": "Google Play/ar/Tablet 10/02.png",
+      "width": 1440,
+      "height": 2560,
+      "family": "android-tablet",
+      "lang": "ar-SA",
+      "slide": 2
+    },
+    {
+      "path": "Google Play/ar/Tablet 10/03.png",
+      "width": 1440,
+      "height": 2560,
+      "family": "android-tablet",
+      "lang": "ar-SA",
+      "slide": 3
+    },
+    {
+      "path": "Google Play/ar/Tablet 10/04.png",
+      "width": 1440,
+      "height": 2560,
+      "family": "android-tablet",
+      "lang": "ar-SA",
+      "slide": 4
+    }
+  ],
+  "warnings": []
+}

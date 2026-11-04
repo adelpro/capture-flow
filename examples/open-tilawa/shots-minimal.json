@@ -1,0 +1,47 @@
+{
+  "app": "Tilawah",
+  "template": "sada",
+  "out": "store-assets-minimal",
+  "structure": "stores",
+  "languages": [
+    "ar-SA"
+  ],
+  "sizes": [
+    "play-phone",
+    "play-tablet-10"
+  ],
+  "slides": [
+    {
+      "headline": "استمع *بخشوع*",
+      "subtitle": "تلاوة كاملة، بلا تشتيت.",
+      "captures": {
+        "android-phone": "captures-20x9/android-01.png",
+        "android-tablet": "captures/android-tablet-01.png"
+      }
+    },
+    {
+      "headline": "قارئك *المفضّل*",
+      "subtitle": "نخبة من القرّاء، وبحث سريع.",
+      "captures": {
+        "android-phone": "captures-20x9/android-02.png",
+        "android-tablet": "captures/android-tablet-02.png"
+      }
+    },
+    {
+      "headline": "تحكّم *كامل*",
+      "subtitle": "السمة، اللغة، وسرعة التلاوة.",
+      "captures": {
+        "android-phone": "captures-20x9/android-03.png",
+        "android-tablet": "captures/android-tablet-03.png"
+      }
+    },
+    {
+      "headline": "حرّ *ومفتوح*",
+      "subtitle": "بلا حسابات ولا تتبّع.",
+      "captures": {
+        "android-phone": "captures-20x9/android-04.png",
+        "android-tablet": "captures/android-tablet-04.png"
+      }
+    }
+  ]
+}

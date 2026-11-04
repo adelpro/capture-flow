@@ -4,6 +4,9 @@
  *
  *   PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node capture.mjs
  *
+ * CAPTURE_DEVICES='[{"key":"android","viewport":{"width":360,"height":800},"scale":3}]'
+ * overrides the device list; CAPTURE_OUT overrides the output folder.
+ *
  * iPhone:  440 x 956 CSS @3x = 1320 x 2868 (App Store 6.9")
  * Android: 360 x 640 CSS @3x = 1080 x 1920 (Google Play 9:16)
  *
@@ -54,22 +57,26 @@ const state = (theme) =>
     updatedAt: Date.now(),
   });
 
-const devices = [
-  { key: 'iphone', viewport: { width: 440, height: 956 }, scale: 3 },
-  { key: 'android', viewport: { width: 360, height: 640 }, scale: 3 },
-  // Large screens. The pixel sizes match the frames the store sizes expect:
-  // iPad 13" is 3:4 (2064×2752), Android tablet is 16:10 inside a 9:16 canvas
-  // (1600×2560 capture, 1440×2560 export).
-  { key: 'ipad', viewport: { width: 768, height: 1024 }, scale: 2.6875 },
-  { key: 'android-tablet', viewport: { width: 800, height: 1280 }, scale: 2 },
-];
+const devices = process.env.CAPTURE_DEVICES
+  ? JSON.parse(process.env.CAPTURE_DEVICES)
+  : [
+      { key: 'iphone', viewport: { width: 440, height: 956 }, scale: 3 },
+      { key: 'android', viewport: { width: 360, height: 640 }, scale: 3 },
+      // Large screens. The pixel sizes match the frames the store sizes expect:
+      // iPad 13" is 3:4 (2064×2752), Android tablet is 16:10 inside a 9:16 canvas
+      // (1600×2560 capture, 1440×2560 export).
+      { key: 'ipad', viewport: { width: 768, height: 1024 }, scale: 2.6875 },
+      { key: 'android-tablet', viewport: { width: 800, height: 1280 }, scale: 2 },
+    ];
 
-const screens = [
+const allScreens = [
   { name: 'player', hash: '#/', flow: 'play' },
   { name: 'reciters', hash: '#/', flow: 'reciters' },
   { name: 'settings', hash: '#/settings', gate: 'settings' },
   { name: 'about', hash: '#/about', gate: 'about' },
 ];
+const only = process.env.CAPTURE_SCREENS?.split(',').map((s) => s.trim()).filter(Boolean);
+const screens = only?.length ? allScreens.filter((s) => only.includes(s.name)) : allScreens;
 
 mkdirSync(OUT, { recursive: true });
 
@@ -80,7 +87,10 @@ const browser = await chromium.launch().catch(async (error) => {
 
 try {
   for (const device of devices) {
-    for (const [index, screen] of screens.entries()) {
+    for (const screen of screens) {
+      // Number from the full screen list so `CAPTURE_SCREENS` writes the same
+      // filenames as a full run instead of overwriting android-01.png.
+      const shot = String(allScreens.indexOf(screen) + 1).padStart(2, '0');
       const context = await browser.newContext({
         viewport: device.viewport,
         deviceScaleFactor: device.scale,
@@ -135,10 +145,18 @@ try {
       };
 
       if (screen.flow === 'reciters') {
-        // 1.13.19 moved the picker behind the reciters section's "عرض الكل".
-        const showAll = page.getByRole('button', { name: 'عرض الكل' }).first();
-        await showAll.waitFor({ timeout: 45_000 });
-        await showAll.click({ timeout: 20_000 });
+        // 1.13.20+ opens the picker from the "اختيار القارئ" pill under the
+        // player; older builds had a "عرض الكل" section button. Try both so
+        // the shot keeps working across releases.
+        const picker =
+          page.locator('button').filter({ hasText: 'اختيار القارئ' }).first();
+        if (await picker.count()) {
+          await picker.click({ timeout: 20_000 });
+        } else {
+          const showAll = page.getByRole('button', { name: 'عرض الكل' }).first();
+          await showAll.waitFor({ timeout: 45_000 });
+          await showAll.click({ timeout: 20_000 });
+        }
         await page.getByPlaceholder('ابحث باسم القارئ').waitFor({ timeout: 15_000 });
         await page.waitForTimeout(900);
       } else if (screen.flow === 'play') {
@@ -163,7 +181,7 @@ try {
       }
 
       await page.evaluate(() => document.fonts.ready);
-      const file = path.join(OUT, `${device.key}-${String(index + 1).padStart(2, '0')}.png`);
+      const file = path.join(OUT, `${device.key}-${shot}.png`);
       await page.screenshot({ path: file, timeout: 90_000, animations: 'disabled' });
 
       const info = await page.evaluate(() => {
